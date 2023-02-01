@@ -1,0 +1,99 @@
+/* Header */
+
+/* oswald-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/oswald-v49-latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/oswald-v49-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/oswald-v49-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/oswald-v49-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/oswald-v49-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/oswald-v49-latin-regular.svg#Oswald') format('svg'); /* Legacy iOS */
+  }
+
+body {
+  width: 1440px;
+  margin: 0 auto;
+  font-family: 'Oswald'
+}
+
+.header {
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.wrapper__header {
+  display: flex;
+  justify-content: space-between;
+  height: 110px;
+  align-items: center;
+}
+
+.menu__ul {
+  display: flex;
+}
+
+.menu__li {
+  margin-right: 46px;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.menu__li:last-child {
+  margin-right: 0;
+}
+
+.site-header {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: center;
+}
+
+/* Coffee bg */
+
+.coffee-photo {
+  width: 100%;
+  height: 622px;
+  margin: 0 auto;
+}
+
+.wrapper-coffee-photo {
+  width: 1440px;
+  height: inherit;
+  background: url("../img/coffee-bg.png") no-repeat center 64%;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.baner-text {
+    display: flex;
+    flex-wrap: wrap;
+    width: 388px;
+    justify-content: center;
+}
+
+.baner-text__p {
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 89px;
+    color: #ffffff;
+}
+
+.baner-text__wand {
+    background: #817070;
+    width: 80px;
+    height: 10px;
+
+}
