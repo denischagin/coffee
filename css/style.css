@@ -94,6 +94,7 @@ body {
   font-size: 60px;
   line-height: 89px;
   color: #ffffff;
+  text-align: center;
 }
 
 .baner-text__wand {
@@ -246,9 +247,13 @@ body {
   }
   
   .menu__li {
-    margin-right: 20px;
+    margin-right: 10px;
+    padding: 2px;
+    /* border-left: 1px solid black; */
     font-weight: 300;
-    font-size: 24px;
+    background-color: #8070707b;
+    border-radius: 5px;
+    font-size: 20px;
     line-height: 36px;
   }
   
@@ -261,6 +266,7 @@ body {
     font-size: 30px;
     line-height: 53px;
     text-align: center;
+    margin-right: 5px;
   }
 
   .wrapper__header {
@@ -281,7 +287,7 @@ body {
   .story__img {
     margin-right: 40px;
     grid-area: img-story;
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
   }
   
