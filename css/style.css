@@ -337,9 +337,8 @@ body {
     font-size: 30px;
     line-height: 53px;
     text-align: center;
-    padding-right: 5px;
-    margin-right: 5px;
-    border-right: 2px solid #5c4b4b;
+    margin-right: 7px;
+    /* border-right: 2px solid #5c4b4b; */
   }
 
   .wrapper__header {
