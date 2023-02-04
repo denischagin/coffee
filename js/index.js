@@ -115,12 +115,12 @@ blogCardDiv.addEventListener(
 );
 
 function handleGesture() {
-  if (touchstartX - touchendX > 200) {
+  if (touchstartX - touchendX > 130) {
     // left swipe
     flippingCards((indexBlog + 1) % 3);
   }
 
-  if (touchendX - touchstartX > 200) {
+  if (touchendX - touchstartX > 130) {
     // right swipe
     flippingCards((indexBlog + 2) % 3);
   }
