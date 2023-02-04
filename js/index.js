@@ -79,7 +79,7 @@ const flippingCards = async (index) => {
   await revertDampingAnimation();
 };
 
-blogCardDiv.addEventListener("click", (e) => {
+blogCardDiv.addEventListener("dblclick", (e) => {
   flippingCards((indexBlog + 1) % 3);
 });
 
