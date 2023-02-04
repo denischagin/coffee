@@ -101,7 +101,6 @@ blogCardDiv.addEventListener(
   "touchstart",
   function (event) {
     touchstartX = event.changedTouches[0].screenX;
-    touchstartY = event.changedTouches[0].screenY;
   },
   false
 );
@@ -110,19 +109,18 @@ blogCardDiv.addEventListener(
   "touchend",
   function (event) {
     touchendX = event.changedTouches[0].screenX;
-    touchendY = event.changedTouches[0].screenY;
     handleGesture();
   },
   false
 );
 
 function handleGesture() {
-  if (touchendX < touchstartX) {
+  if (touchstartX - touchendX > 100) {
     // left swipe
     flippingCards((indexBlog + 1) % 3);
   }
 
-  if (touchendX > touchstartX) {
+  if (touchendX - touchstartX > 100) {
     // right swipe
     flippingCards((indexBlog + 2) % 3);
   }
