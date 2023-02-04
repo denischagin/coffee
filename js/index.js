@@ -55,18 +55,20 @@ const revertDampingAnimation = () => {
   });
 };
 
-const flippingCards = async (indexBlog) => {
+const flippingCards = async (index) => {
   if (
     blogCardDiv.classList.contains("animation1") ||
     blogCardDiv.classList.contains("animation2")
   )
     return;
 
-  paginationDiv.children[(indexBlog + 1) % 3].classList.remove("active");
-  paginationDiv.children[(indexBlog + 2) % 3].classList.remove("active");
+  indexBlog = index;
 
-  const currentCard = blogCardsArray[indexBlog];
-  paginationDiv.children[indexBlog].classList.add("active");
+  paginationDiv.children[(index + 1) % 3].classList.remove("active");
+  paginationDiv.children[(index + 2) % 3].classList.remove("active");
+
+  const currentCard = blogCardsArray[index];
+  paginationDiv.children[index].classList.add("active");
 
   await dampingAnimation();
 
@@ -78,16 +80,50 @@ const flippingCards = async (indexBlog) => {
 };
 
 blogCardDiv.addEventListener("click", (e) => {
-  indexBlog = ++indexBlog % 3;
-  flippingCards(indexBlog);
+  flippingCards((indexBlog + 1) % 3);
 });
 
 paginationDiv.addEventListener("click", (e) => {
-  const index = Array.prototype.indexOf.call(e.target.parentNode.children, e.target);
-  indexBlog = index
-  flippingCards(indexBlog);
+  const index = Array.prototype.indexOf.call(
+    e.target.parentNode.children,
+    e.target
+  );
+  flippingCards(index);
 });
 
 initPagination();
 
 // window.addEventListener("resize", move, true);
+
+// Свайпы
+
+blogCardDiv.addEventListener(
+  "touchstart",
+  function (event) {
+    touchstartX = event.changedTouches[0].screenX;
+    touchstartY = event.changedTouches[0].screenY;
+  },
+  false
+);
+
+blogCardDiv.addEventListener(
+  "touchend",
+  function (event) {
+    touchendX = event.changedTouches[0].screenX;
+    touchendY = event.changedTouches[0].screenY;
+    handleGesture();
+  },
+  false
+);
+
+function handleGesture() {
+  if (touchendX < touchstartX) {
+    // left swipe
+    flippingCards((indexBlog + 1) % 3);
+  }
+
+  if (touchendX > touchstartX) {
+    // right swipe
+    flippingCards((indexBlog + 2) % 3);
+  }
+}
