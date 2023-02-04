@@ -292,12 +292,12 @@ body {
 }
 
 .animation1 {
-  animation: blog-card1 1s ease-out ;
+  animation: blog-card1 .5s ease-out ;
 }
 
 
 .animation2 {
-  animation: blog-card2 1s ease-in ;
+  animation: blog-card2 .5s ease-in ;
 }
 
 @keyframes blog-card1 {

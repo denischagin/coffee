@@ -41,7 +41,7 @@ const dampingAnimation = () => {
     setTimeout(() => {
       blogCardDiv.classList.remove("animation1");
       resolve();
-    }, 900);
+    }, 450);
   });
 };
 
@@ -51,7 +51,7 @@ const revertDampingAnimation = () => {
     setTimeout(() => {
       blogCardDiv.classList.remove("animation2");
       resolve();
-    }, 1000);
+    }, 500);
   });
 };
 
