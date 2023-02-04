@@ -1,6 +1,6 @@
 const blogCardDiv = document.querySelectorAll(".blog-card")[0];
-let indexBlog = 1;
-
+const paginationDiv = document.querySelector(".pagination");
+let indexBlog = 0;
 const blogCardsArray = [
   {
     header: "Daily Coffee News",
@@ -25,6 +25,16 @@ const blogCardsArray = [
   },
 ];
 
+const initPagination = () => {
+  for (let i = 0; i < blogCardsArray.length; i++) {
+    const card = blogCardsArray[i];
+    const block = document.createElement("div");
+    if (i == 0) block.classList.add("active");
+    block.classList.add("block");
+    paginationDiv.insertAdjacentElement("beforeend", block);
+  }
+};
+
 const dampingAnimation = () => {
   return new Promise((resolve, reject) => {
     blogCardDiv.classList.add("animation1");
@@ -45,15 +55,18 @@ const revertDampingAnimation = () => {
   });
 };
 
-const flippingCards = async () => {
-  indexBlog++;
-  const currentCard = blogCardsArray[indexBlog % 3];
-
+const flippingCards = async (indexBlog) => {
   if (
     blogCardDiv.classList.contains("animation1") ||
     blogCardDiv.classList.contains("animation2")
   )
     return;
+
+  paginationDiv.children[(indexBlog + 1) % 3].classList.remove("active");
+  paginationDiv.children[(indexBlog + 2) % 3].classList.remove("active");
+
+  const currentCard = blogCardsArray[indexBlog];
+  paginationDiv.children[indexBlog].classList.add("active");
 
   await dampingAnimation();
 
@@ -65,7 +78,16 @@ const flippingCards = async () => {
 };
 
 blogCardDiv.addEventListener("click", (e) => {
-  flippingCards();
+  indexBlog = ++indexBlog % 3;
+  flippingCards(indexBlog);
 });
+
+paginationDiv.addEventListener("click", (e) => {
+  const index = Array.prototype.indexOf.call(e.target.parentNode.children, e.target);
+  indexBlog = index
+  flippingCards(indexBlog);
+});
+
+initPagination();
 
 // window.addEventListener("resize", move, true);

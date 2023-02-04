@@ -179,12 +179,14 @@ body {
 }
 
 .blog-content {
+  position: relative;
   margin-top: 60px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   justify-content: center;
 }
+
 
 .card-header {
   font-weight: 400;
@@ -204,6 +206,28 @@ body {
   margin: 24px auto;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.block {
+  border-radius: 20px;
+  height: 6px;
+  width: 50px;
+  margin-right: 10px;
+  background: #DEDEDE;
+}
+
+.block:last-child {
+  margin-right: 0px;
+}
+
+.block.active {
+  background: #BABABA;
+}
 /* Footer */
 
 .footer-subscribe {
@@ -388,5 +412,9 @@ body {
     grid-area: img-story;
     width: 300px;
     margin: 0 auto;
+  }
+
+  .blog-img {
+    width: 250px;
   }
 }
