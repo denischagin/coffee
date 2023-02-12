@@ -160,22 +160,12 @@ body {
   text-align: center;
 }
 
-/* .blog-card {
+.blog-card {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   padding: 20px 20px 46px 20px;
   background-color: #ffffff;
-} */
-
-.blog-card {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  justify-content: center;
-  align-self: center;
-  background-color: #ffffff;
-  padding: 20px;
-  /* opacity: 1; */
-  /* max-width: min-content; */
+  transition: opacity 1s ease; 
 }
 
 .blog-content {

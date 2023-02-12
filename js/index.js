@@ -27,7 +27,6 @@ const blogCardsArray = [
 
 const initPagination = () => {
   for (let i = 0; i < blogCardsArray.length; i++) {
-    const card = blogCardsArray[i];
     const block = document.createElement("div");
     if (i == 0) block.classList.add("active");
     block.classList.add("block");
@@ -35,27 +34,7 @@ const initPagination = () => {
   }
 };
 
-const dampingAnimation = () => {
-  return new Promise((resolve, reject) => {
-    blogCardDiv.classList.add("animation1");
-    setTimeout(() => {
-      blogCardDiv.classList.remove("animation1");
-      resolve();
-    }, 450);
-  });
-};
-
-const revertDampingAnimation = () => {
-  return new Promise((resolve, reject) => {
-    blogCardDiv.classList.add("animation2");
-    setTimeout(() => {
-      blogCardDiv.classList.remove("animation2");
-      resolve();
-    }, 500);
-  });
-};
-
-const flippingCards = async (index) => {
+const flippingCards = async (index, e) => {
   if (
     blogCardDiv.classList.contains("animation1") ||
     blogCardDiv.classList.contains("animation2")
@@ -66,17 +45,18 @@ const flippingCards = async (index) => {
 
   paginationDiv.children[(index + 1) % 3].classList.remove("active");
   paginationDiv.children[(index + 2) % 3].classList.remove("active");
-
-  const currentCard = blogCardsArray[index];
   paginationDiv.children[index].classList.add("active");
 
-  await dampingAnimation();
+  blogCardDiv.style.opacity = 0;
 
-  blogCardDiv.children[0].textContent = currentCard.header;
-  blogCardDiv.children[1].src = currentCard.imgSrc;
-  blogCardDiv.children[2].textContent = currentCard.description;
-
-  await revertDampingAnimation();
+  blogCardDiv.addEventListener("transitionend", (e) => {
+    if (!e.propertyName === "opacity") return;
+    const currentCard = blogCardsArray[index];
+    blogCardDiv.children[0].textContent = currentCard.header;
+    blogCardDiv.children[1].src = currentCard.imgSrc;
+    blogCardDiv.children[2].textContent = currentCard.description;
+    blogCardDiv.style.opacity = 1;
+  });
 };
 
 blogCardDiv.addEventListener("dblclick", (e) => {
@@ -93,8 +73,6 @@ paginationDiv.addEventListener("click", (e) => {
 
 initPagination();
 
-// window.addEventListener("resize", move, true);
-
 // Свайпы
 
 blogCardDiv.addEventListener(
@@ -107,8 +85,8 @@ blogCardDiv.addEventListener(
 
 blogCardDiv.addEventListener(
   "touchend",
-  function (event) {
-    touchendX = event.changedTouches[0].screenX;
+  function (e) {
+    touchendX = e.changedTouches[0].screenX;
     handleGesture();
   },
   false
@@ -125,3 +103,11 @@ function handleGesture() {
     flippingCards((indexBlog + 2) % 3);
   }
 }
+// const move = () => {
+    
+
+// }
+
+// window.addEventListener("resize", move, true);
+
+
