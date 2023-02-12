@@ -97,10 +97,21 @@ body {
   text-align: center;
 }
 
+@-webkit-keyframes baner-text-wand-animation {
+  0% {
+    background: #817070;
+  }
+  100% {
+    background: #d7b0b0;
+  }
+}
+
+
 .baner-text__wand {
   background: #817070;
-  width: 80px;
   height: 10px;
+  width: 80px;
+  animation: baner-text-wand-animation 3s infinite ease-in-out alternate;
 }
 
 /* Story */
@@ -165,7 +176,7 @@ body {
   flex-direction: column;
   padding: 20px 20px 46px 20px;
   background-color: #ffffff;
-  transition: opacity 1s ease; 
+  transition: opacity 0.5s ease;
 }
 
 .blog-content {
@@ -176,7 +187,6 @@ body {
   gap: 70px;
   justify-content: center;
 }
-
 
 .card-header {
   font-weight: 400;
@@ -208,7 +218,7 @@ body {
   height: 6px;
   width: 50px;
   margin-right: 10px;
-  background: #DEDEDE;
+  background: #dedede;
 }
 
 .block:last-child {
@@ -216,7 +226,7 @@ body {
 }
 
 .block.active {
-  background: #BABABA;
+  background: #bababa;
 }
 /* Footer */
 
@@ -271,7 +281,6 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px 0;
-  
 }
 
 .text-copyright {
@@ -279,33 +288,6 @@ body {
   font-weight: 300;
   font-size: 20px;
   line-height: 30px;
-}
-
-.animation1 {
-  animation: blog-card1 .5s ease-out ;
-}
-
-
-.animation2 {
-  animation: blog-card2 .5s ease-in ;
-}
-
-@keyframes blog-card1 {
-  0% {
-    opacity: 100;
-  } 
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes blog-card2 {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 100;
-  }
 }
 
 @media screen and (max-width: 1235px) {
@@ -358,7 +340,7 @@ body {
   .menu__li {
     display: flex;
     align-items: end;
-    margin-right: 10px;
+    margin-right: 3px;
     padding: 2px;
     /* border-left: 1px solid black; */
     font-weight: 300;
@@ -366,7 +348,7 @@ body {
     color: #5c4b4b;
     height: 60%;
     border-radius: 0 0 5px 5px;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 36px;
   }
 
